@@ -27,3 +27,7 @@ void MD_Servo::rot(float deg)
     pid_output_ = pid.control(now_enc_);
     motor->drive(pid_output_);
 }
+
+void MD_Servo::drive(float value){
+    motor->drive(value);
+}

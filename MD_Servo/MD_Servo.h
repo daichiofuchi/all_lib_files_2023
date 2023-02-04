@@ -11,6 +11,7 @@ class MD_Servo
 public:
     MD_Servo(PinName pwm_pin, PinName dir_pin, PinName enc_a, PinName enc_b, int pulse_per_rev, float CTRL_PERIOD, float p_gain, float i_gain, float d_gain);
     void rot(float deg);
+    void drive(float value);
 
 private:
     PinName pwm_pin_;
