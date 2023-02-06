@@ -1,33 +1,34 @@
 #include "MD_Servo.h"
 
-MD_Servo::MD_Servo(PinName pwm_pin, PinName dir_pin, PinName enc_a, PinName enc_b, int pulse_per_rev, float CTRL_PERIOD, float p_gain, float i_gain, float d_gain)
+MD_Servo::MD_Servo(dc_motor_1 motor, rotary_encoder encoder.float CTRL_PERIOD, float p_gain, float i_gain, float d_gain) : motor_{motor}, encoder_{encoder}
 {
-    pwm_pin_ = pwm_pin;
-    dir_pin_ = dir_pin;
-    enc_a_ = enc_a;
-    enc_b_ = enc_b;
-    pulse_per_rev_ = pulse_per_rev;
     CTRL_PERIOD_ = CTRL_PERIOD;
-    p_gain_ = p_gain;
-    i_gain_ = i_gain;
-    d_gain_ = d_gain;
-    pid.set(CTRL_PERIOD_);
-    motor->set(pwm_pin_, dir_pin, 1);
-    encoder->set(enc_a_, enc_b_, NC, pulse_per_rev_, rotary_encoder::X4_ENCODING);
-    pid.setTarget(0);
-    pid.setGain(p_gain_, i_gain_, d_gain_);
-    pid.setFirstPosition(0.0);
-    pid.setLimitOutput(50);
+    pid_.set(CTRL_PERIOD_);
+    pid_.setTarget(0);
+    pid_.setGain(10.0f, 0.0f, 0.5f);
+    pid_.setFirstPosition(0.0);
+    pid_.setLimitOutput(50);
 }
 
 void MD_Servo::rot(float deg)
 {
-    pid.setTarget(deg);
-    now_enc_ = encoder->getRad();
-    pid_output_ = pid.control(now_enc_);
-    motor->drive(pid_output_);
+    pid_.setTarget(deg);
+    now_enc_ = encoder.getRad();
+    pid_output_ = pid_.control(now_enc_);
+    motor_.drive(pid_output_);
 }
 
-void MD_Servo::drive(float value){
-    motor->drive(value);
+void MD_Servo::drive(float value)
+{
+    motor_.drive(value);
+}
+
+void MD_Servo::set_gain(float p_gain, float i_gain, float d_gain)
+{
+    pid_.setGain(p_gain, i_gain, d_gain);
+}
+
+void set_output_limit(float value)
+{
+    pid_.setLimitOutput(value);
 }

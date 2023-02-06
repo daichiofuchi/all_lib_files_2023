@@ -11,7 +11,6 @@ public:
     dc_motor_1(PinName pwm_port, PinName Output_Port, bool); // コンストラクタ
     void drive(float);
     float read();
-    void set(PinName pwm_port, PinName Output_Port, bool);
 
 private:
     float input_pwm;

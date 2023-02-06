@@ -25,7 +25,6 @@ public:
     float getVel(float);
     float not_reset_getRad(void);
     float not_reset_getDeg(void);
-    void set(PinName channelA, PinName channelB, PinName index, int pulsesPerRev, Encoding encoding = X2_ENCODING);
 
 private:
     void encode(void);

@@ -42,15 +42,3 @@ float dc_motor_1::read()
 {
     return input_pwm;
 }
-
-void dc_motor_1::set(PinName pwm_port, PinName output_Port, bool dire) {
-    pwm=pwm_port;
-    output=output_Port;
-    hertz = 16000.0f; // MDD10Aの最大周波数は20kHs(50us).
-    period_second = 1.0f / (hertz);
-    pwm.period(period_second);
-    magnification = period_second / 100;
-    output.write(1);
-    pwm.pulsewidth(0.0f);
-    direction = dire;
-}

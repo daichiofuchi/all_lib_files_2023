@@ -9,25 +9,19 @@
 class MD_Servo
 {
 public:
-    MD_Servo(PinName pwm_pin, PinName dir_pin, PinName enc_a, PinName enc_b, int pulse_per_rev, float CTRL_PERIOD, float p_gain, float i_gain, float d_gain);
+    MD_Servo(dc_motor_1 motor, rotary_encoder encoder.float CTRL_PERIOD);
     void rot(float deg);
     void drive(float value);
+    void set_gain(float p_gain, float i_gain, float d_gain);
+    void set_output_limit(float value);
 
 private:
-    PinName pwm_pin_;
-    PinName dir_pin_;
-    PinName enc_a_;
-    PinName enc_b_;
-    int pulse_per_rev_;
     float CTRL_PERIOD_;
-    float p_gain_;
-    float i_gain_;
-    float d_gain_;
     float deg_;
     float now_enc_;
     float pid_output_;
-    PID pid;
-    dc_motor_1* motor;
-    rotary_encoder* encoder;
+    PID pid_;
+    dc_motor_1 motor_;
+    rotary_encoder encoder_;
 };
 #endif
