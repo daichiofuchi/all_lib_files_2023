@@ -9,7 +9,7 @@
 class MD_Servo
 {
 public:
-    MD_Servo(dc_motor_1 motor, rotary_encoder encoder.float CTRL_PERIOD);
+    MD_Servo(dc_motor_1 motor, rotary_encoder encoder, float CTRL_PERIOD);
     void rot(float deg);
     void drive(float value);
     void set_gain(float p_gain, float i_gain, float d_gain);

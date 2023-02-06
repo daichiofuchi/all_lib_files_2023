@@ -1,6 +1,6 @@
 #include "MD_Servo.h"
 
-MD_Servo::MD_Servo(dc_motor_1 motor, rotary_encoder encoder.float CTRL_PERIOD, float p_gain, float i_gain, float d_gain) : motor_{motor}, encoder_{encoder}
+MD_Servo::MD_Servo(dc_motor_1 motor, rotary_encoder encoder, float CTRL_PERIOD) : motor_{motor}, encoder_{encoder}
 {
     CTRL_PERIOD_ = CTRL_PERIOD;
     pid_.set(CTRL_PERIOD_);
