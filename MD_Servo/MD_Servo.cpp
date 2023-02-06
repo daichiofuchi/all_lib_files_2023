@@ -13,7 +13,7 @@ MD_Servo::MD_Servo(dc_motor_1 motor, rotary_encoder encoder, float CTRL_PERIOD) 
 void MD_Servo::rot(float deg)
 {
     pid_.setTarget(deg);
-    now_enc_ = encoder.getRad();
+    now_enc_ = encoder_.getRad();
     pid_output_ = pid_.control(now_enc_);
     motor_.drive(pid_output_);
 }
@@ -28,7 +28,7 @@ void MD_Servo::set_gain(float p_gain, float i_gain, float d_gain)
     pid_.setGain(p_gain, i_gain, d_gain);
 }
 
-void set_output_limit(float value)
+void MD_Servo::set_output_limit(float value)
 {
     pid_.setLimitOutput(value);
 }
