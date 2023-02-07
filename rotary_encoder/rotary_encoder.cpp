@@ -1,5 +1,4 @@
 #include "rotary_encoder.h"
-#include "rotary_encoder.h"
 rotary_encoder::rotary_encoder(
     PinName channelA,
     PinName channelB,

@@ -1,4 +1,0 @@
-[ui]
-ignore.local = .hg/hgignore
-[paths]
-default = https://developer.mbed.org/users/Abe_t/code/ps3_controller/
